@@ -24,7 +24,7 @@ const storeSchema = new mongoose.Schema({
             default: 'Point'
         },
         coordinates: [{
-            type: String,
+            type: Number,
             required: 'You must supply coordinates'
         }],
         address: {
@@ -43,6 +43,10 @@ const storeSchema = new mongoose.Schema({
 storeSchema.index({
     name: 'text',
     description: 'text'
+});
+
+storeSchema.index({
+    location: '2dsphere'
 });
 
 storeSchema.pre('save', async function(next) {

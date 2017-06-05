@@ -26,6 +26,8 @@ router.get('/store/:slug', catchErrors(storeController.getStoreBySlug));
 router.get('/tags', catchErrors(storeController.getStoresByTag));
 router.get('/tags/:tag', catchErrors(storeController.getStoresByTag));
 
+router.get('/map', storeController.map);
+
 router.get('/login', userController.loginForm);
 router.post('/login', authController.login);
 
@@ -48,5 +50,6 @@ router.post('/account/reset/:token',
 );
 
 router.get('/api/v1/search', catchErrors(storeController.searchStores));
+router.get('/api/v1/stores/near', catchErrors(storeController.mapStores));
 
 module.exports = router;
